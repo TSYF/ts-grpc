@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package productPackage;
+
+service Product {
+
+    rpc createProduct(ProductItem) returns (ProductItem);
+    rpc readProducts(none) returns (ProductItems);
+    rpc readProductStream(none) returns (stream ProductItem);
+}
+
+message none {}
+
+message ProductItem {
+    optional uint64 id = 1;
+    string name = 2;
+    string description = 3;
+    uint32 price = 4;
+    repeated string images = 5;
+}
+
+message ProductItems {
+    repeated ProductItem items = 1;
+}
